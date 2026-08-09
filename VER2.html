@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHERIA | Curators of Serenity</title>
+  <!-- フォント読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 基本設定 */
+    :root {
+      --bg-color: #f7f6f2;
+      --text-main: #2b2b2a;
+      --text-muted: #6e6d6a;
+      --accent-color: #8c857b;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+      overflow-x: hidden;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 3rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* メインビジュアル（ヒーロー） */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                  url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 4.5rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    .btn-circle {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-circle:hover {
+      background: #fff;
+      color: var(--text-main);
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 8rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* ABOUT セクション */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-main);
+      line-height: 2;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: grayscale(20%);
+    }
+
+    /* PORTFOLIO セクション */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      transition: transform 0.6s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(0.98);
+    }
+
+    .item-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .item-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--text-main);
+    }
+
+    /* フッター */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 900px) {
+      header { padding: 1.5rem 2rem; }
+      nav { display: none; }
+      .hero-title { font-size: 2.5rem; }
+      section { padding: 4rem 2rem; }
+      .about-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .img-box, .portfolio-item img { height: 350px; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="logo">Aetheria</div>
+    <nav>
+      <ul>
+        <li><a href="#about">Vision</a></li>
+        <li><a href="#portfolio">Works</a></li>
+        <li><a href="#journal">Journal</a></li>
+        <li><a href="#contact">Talk</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <div class="hero">
+    <p class="hero-subtitle">Aetheria Design Studio</p>
+    <h1 class="hero-title">Curators of<br>Serenity</h1>
+    <a href="#portfolio" class="btn-circle">Discover the Quiet</a>
+  </div>
+
+  <!-- ABOUT セクション -->
+  <section id="about">
+    <p class="section-label">About Our Philosophy</p>
+    <div class="about-grid">
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop" alt="Botanical detail" class="img-box">
+      <div class="about-text">
+        <p>静寂と洗練が交差する空間を創造します。<br>余白の中に宿る美しさを探求し、心に静けさをもたらすデザインを追求し続けています。</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800&auto=format&fit=crop" alt="Minimalist architecture" class="img-box">
+    </div>
+  </section>
+
+  <!-- PORTFOLIO セクション -->
+  <section id="portfolio">
+    <p class="section-label">Selected Works</p>
+    <div class="portfolio-grid">
+      
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Architecture">
+        <div class="item-meta">
+          <span class="item-title">01 / The Whispering Garden</span>
+          <span>Interior Architecture</span>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000&auto=format&fit=crop" alt="Minimal Room">
+        <div class="item-meta">
+          <span class="item-title">02 / Ethereal Spaces</span>
+          <span>Object & Furniture</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="logo" style="color: var(--text-main);">Aetheria</div>
+    <p>&copy; 2026 AETHERIA. All rights reserved.</p>
+    <p>Instagram / Studio Visit</p>
+  </footer>
+
+</body>
+</html>
